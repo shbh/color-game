@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<head>
+  <Title>color game </Title>
+  <style>
+    body {
+      background-color: #232323;
+      margin: 0;
+    }
+
+    .square {
+      width: 48%;
+      float: left;
+      margin: 1%;
+      border-radius: 15px;
+      height: 48%;
+      box-shadow: 0px 0px 8px 1px #9898988a;
+      border: 1px solid #6f6f6f;
+      box-sizing: border-box;
+    }
+
+    #container {
+      height: 70vh;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: white;
+      line-height: 1.5;
+      text-align: center;
+      background-color: steelblue;
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    .message-alert {
+      color: white;
+      text-align: center;
+
+    }
+
+    #color-hint {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    Hex color code <span id="color-hint"></span>
+  </h1>
+  <div class="message-alert">
+    <h3 id="messagebox"> Guess the color </h3>
+  </div>
+
+  <div id="container"></div>
+
+  <script type="text/javascript">
+
+    // store container element in variable
+    const containerEl = document.getElementById('container');
+
+    // get random integer function
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    // list to use to create colors and boxes
+    const items = [1, 2, 3, 4];
+
+    // create colors list
+    const colors = items.map(() => {
+      return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    });
+
+    // create box element and append to container
+    function createBox(item, i) {
+      const box = document.createElement('div');
+      box.className = 'square color-box';
+      box.style.backgroundColor = colors[i];
+      box.setAttribute('id', colors[i]);
+      box.addEventListener("click", clickHandle);
+      containerEl.append(box);
+      return box;
+    }
+
+
+    // create boxes
+    const boxes = items.map(createBox);
+
+    // get color hint element
+    const colorHint = document.getElementById("color-hint");
+    //  get message box element
+    const messagebox = document.getElementById("messagebox");
+    //  get current index for color choice
+    const currentIndex = getRandomInt(items.length);
+    //  define current color to guess
+    const currentColor = colors[currentIndex];
+
+    // set current color to hint box
+    colorHint.innerHTML = currentColor;
+
+    // box click handler
+    function clickHandle(ev) {
+      if (ev.target.id == currentColor) {
+        messagebox.innerHTML = "color is right";
+      } else {
+        messagebox.innerHTML = "you got it wrong";
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
