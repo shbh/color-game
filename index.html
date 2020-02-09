@@ -20,18 +20,16 @@
     }
 
     #container {
-      height: 70vh;
+      height: 65vh;
       width: 60%;
       margin: 0 auto;
     }
 
-    h1 {
+    .nav {
       color: white;
-      line-height: 1.5;
       text-align: center;
       background-color: steelblue;
-      margin: 0;
-      padding: 20px 0;
+      padding: 10px 0;
     }
 
     .message-alert {
@@ -49,9 +47,16 @@
 
 <body>
 
-  <h1>
-    Hex color code <span id="color-hint"></span>
-  </h1>
+  <div class="nav">
+    <h1>
+      Hex color code <span id="color-hint"></span>
+    </h1>
+    <!-- Place this tag where you want the button to render. -->
+    <a class="github-button" href="https://github.com/shbh/color-game"
+      data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large"
+      aria-label="Star shbh/color-game on GitHub">Star</a>
+
+  </div>
   <div class="message-alert">
     <h3 id="messagebox"> Guess the color </h3>
   </div>
@@ -114,6 +119,8 @@
 
   </script>
 
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
